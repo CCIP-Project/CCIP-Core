@@ -21,7 +21,10 @@ The Crypto Community Investment Project (CCIP) Is a project which aims to have t
 ### Mac.
 
 ### Linux.
-
+Building `ccipd`,`ccip-cli`, `ccip-tx`, `ccip-qt` and Tests for the forementioned is as simple as running the following command from the project root --
+```
+./autogen.sh && ./configure && make
+```
 
 ## Running & Example Usage.
 
