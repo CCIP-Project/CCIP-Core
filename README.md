@@ -10,7 +10,7 @@ The Crypto Community Investment Project (CCIP) Is a project which aims to have t
 <tr><td>Difficulty Retargeting</td><td>Each Block</td></tr>
 <tr><td>Max Coin Supply (PoW Phase [Up to Block 100,000])</td><td>250,000 CCIP</td></tr>
 <tr><td>Max Coin Supply (PoS Phase)</td><td>30,000,000 CCIP</td></tr>
-<tr><td>Premine</td><td>0 CCIP</td></tr>
+<tr><td>Premine</td><td>100,000 CCIP</td></tr>
 </table>
 
 
