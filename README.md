@@ -7,12 +7,13 @@ The Crypto Community Investment Project (CCIP) is a project which aims to provid
 Community is at the heart of `CCIP` allowing users who hold masternodes to vote on worth while causes and charities for a percentage of the block reward to be donated to.
 
 <table>
-<tr><td>Algo</td><td>SHA-512</td></tr>
+<tr><td>Algo</td><td>Quark</td></tr>
 <tr><td>Block Time</td><td>60 Seconds</td></tr>
 <tr><td>Difficulty Retargeting</td><td>Each Block</td></tr>
-<tr><td>Max Coin Supply (PoW Phase [Up to Block 100,000])</td><td>250,000 CCIP</td></tr>
+<tr><td>Max Coin Supply (PoW Phase [Up to Block 200,000])</td><td>500,000 CCIP</td></tr>
 <tr><td>Max Coin Supply (PoS Phase)</td><td>30,000,000 CCIP</td></tr>
-<tr><td>Premine</td><td>100,000 CCIP</td></tr>
+<tr><td>Block Reward</td><td>25 CCIP</td></tr>
+<tr><td>Premine</td><td>3,000,000 CCIP</td></tr>
 </table>
 
 
