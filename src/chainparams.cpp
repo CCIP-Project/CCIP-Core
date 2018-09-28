@@ -53,10 +53,10 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (259201, uint256("1c9121bf9329a6234bfd1ea2d91515f19cd96990725265253f4b164283ade5dd"));
+    (259201, uint256("0x001"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1525106065, // * UNIX timestamp of last checkpoint block
+    1740710, // * UNIX timestamp of last checkpoint block
     0,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     250        // * estimated number of transactions per day after checkpoint
@@ -74,7 +74,7 @@ static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
     boost::assign::map_list_of(0, uint256("0x001"));
 static const Checkpoints::CCheckpointData dataRegtest = {
     &mapCheckpointsRegtest,
-    1454124731,
+    1740710,
     0,
     250};
 
@@ -130,8 +130,8 @@ public:
         /** Height or Time Based Activations **/
         nLastPOWBlock = 100000;
         nModifierUpdateBlock = 615800;
-        nZerocoinStartHeight = 0;
-        nZerocoinStartTime = 1537960251; // October 17, 2017 4:30:00 AM
+        nZerocoinStartHeight = 201576;
+        nZerocoinStartTime = 1547960251; // October 17, 2017 4:30:00 AM
         nBlockEnforceSerialRange = 50000; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = 50000; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 891737; //First block that bad serials emerged
@@ -152,28 +152,37 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "Labour conference: Jeremy Corbyn vows to end 'greed-is-good' culture, BBC News, 26 Sep 2018";
+
+        const char* pszTimestamp = "CCIP Project proof of concept test September 2018";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 250 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04c10e83b2703ccf322f7dbd62dd5855ac7c10bd055814ce121ba32607d573b8810c02c0582aed05b4deb9c4b77b26d92428c61256cd42774babea0a073b2ed0c9") << OP_CHECKSIG;
+        txNew.vout[0].nValue = 50 * COIN;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1537960251;
+        genesis.nTime = 1538155525;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 2402015;
+        genesis.nNonce = 1068555;
 
         hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("0xf4ccfa4bb2061ba5bf47246879ad4b6edb7949058b4dcf61f652b3a0523cb22c"));
-        assert(genesis.hashMerkleRoot == uint256("0x1a85ebf66815d0bbfac7b9b1df6f7d7017e81ab2d2e1193acf91b4492eef4e22"));
+        /*
+        printf("%s\n", hashGenesisBlock.ToString().c_str());
+        printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
+        */
+
+        assert(hashGenesisBlock == uint256("00000e75223e09ae9e0645c026dbac7f5094a6f030f7bfd4bd2c39a47756ce30"));    
+        assert(genesis.hashMerkleRoot == uint256("d9256e499a070a2f985551a3bd4f717b5a04941dc85b1024525eb172f0d414c3"));
 
         // vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "ccip.seed.fuzzbawls.pw"));     // Primary DNS Seeder from Fuzzbawls
 
+
+        
+        
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 212);
@@ -264,15 +273,22 @@ public:
         nRejectOldSporkKey = 1522454400; //!> Reject old spork key after Saturday, March 31, 2018 12:00:00 AM GMT
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1537160251;
-        genesis.nNonce = 2402015;
+        genesis.nTime = 1538156122;
+        genesis.nNonce = 1621425;
 
 
 
 
         hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("0x5209e9408eb703cfaf437451ee95d7792053d80fcb53a7b856a161e014cc06ba"));
+
+        /*
+        printf("%s\n", hashGenesisBlock.ToString().c_str());
+        printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
+        */
+
+
+        assert(hashGenesisBlock == uint256("00000484314ef5ddf724393f7d43a1e705b92517cc0486e26ef597a4d56b31b0"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -336,14 +352,14 @@ public:
         nTargetTimespan = 24 * 60 * 60; // CCIP: 1 day
         nTargetSpacing = 1 * 60;        // CCIP: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1537960251;
-        genesis.nBits = 0x207fffff;
-        genesis.nNonce = 12345;
+        genesis.nTime = 1538156214;
+        genesis.nBits = 0x1e0ffff0;
+        genesis.nNonce = 1010108;
 
         hashGenesisBlock = genesis.GetHash();
 
         nDefaultPort = 51476;
-        assert(hashGenesisBlock == uint256("0x74c6c4f53c290e02a0f3f03c6639cb512650840df2c427b990b8acd6c63f2d8b"));
+        assert(hashGenesisBlock == uint256("00000d057b86ee40e55a9b679c19cc9ec529b5a7e885332c27bf25633d3143bb"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.

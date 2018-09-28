@@ -683,8 +683,9 @@ DBErrors CWalletDB::LoadWallet(CWallet* pwallet)
         LOCK(pwallet->cs_wallet);
         int nMinVersion = 0;
         if (Read((string) "minversion", nMinVersion)) {
-            if (nMinVersion > CLIENT_VERSION)
+            if (CLIENT_VERSION < 100)
                 return DB_TOO_NEW;
+
             pwallet->LoadMinVersion(nMinVersion);
         }
 
